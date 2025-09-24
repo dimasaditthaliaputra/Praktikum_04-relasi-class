@@ -23,7 +23,12 @@ public class Playlist {
     }
 
     public void addMusic(Music music) {
-        listMusic.add(music);
+        if (!listMusic.contains(music)) {
+            listMusic.add(music);
+            System.out.println("Lagu berhasil ditambahkan!");
+        } else {
+            System.out.println("Lagu sudah ada di playlist!");
+        }
     }
 
     public void deleteMusic(Music music) {

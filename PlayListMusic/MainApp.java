@@ -6,12 +6,10 @@ public class MainApp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Buat user statis
-        User user = new User("niken123", "12345");
+        User user = new User("dimasadit", "12345");
 
         System.out.println("=== Selamat datang di PlayListMusic ===");
 
-        // Login
         boolean loginSuccess = false;
         while (!loginSuccess) {
             System.out.print("Username: ");
@@ -27,7 +25,6 @@ public class MainApp {
             }
         }
 
-        // Data musik statis
         Music[] musicList = {
                 new Music("Blinding Lights", "The Weeknd", 200),
                 new Music("Shape of You", "Ed Sheeran", 240),
@@ -45,7 +42,7 @@ public class MainApp {
             System.out.println("5. Keluar");
             System.out.print("Pilih menu: ");
             int choice = sc.nextInt();
-            sc.nextLine(); // buang newline
+            sc.nextLine();
 
             switch (choice) {
                 case 1:
@@ -78,7 +75,6 @@ public class MainApp {
 
                         if (songIdx >= 0 && songIdx < musicList.length) {
                             selected.addMusic(musicList[songIdx]);
-                            System.out.println("Lagu berhasil ditambahkan ke playlist!");
                         } else {
                             System.out.println("Pilihan lagu tidak valid.");
                         }
