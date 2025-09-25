@@ -39,7 +39,8 @@ public class MainApp {
             System.out.println("2. Lihat Semua Playlist");
             System.out.println("3. Tambah Lagu ke Playlist");
             System.out.println("4. Putar Lagu dari Playlist");
-            System.out.println("5. Keluar");
+            System.out.println("5. Hapus Lagu dari Playlist");
+            System.out.println("6. Keluar");
             System.out.print("Pilih menu: ");
             int choice = sc.nextInt();
             sc.nextLine();
@@ -104,6 +105,40 @@ public class MainApp {
                     break;
 
                 case 5:
+                    user.getAllPlaylist();
+                    System.out.print("Pilih nomor playlist: ");
+                    int delIdx = sc.nextInt() - 1;
+                    sc.nextLine();
+
+                    if (delIdx >= 0 && delIdx < user.getListPlaylist().size()) {
+                        Playlist p = user.getListPlaylist().get(delIdx);
+
+                        if (p.getAllSong().isEmpty()) {
+                            System.out.println("Playlist kosong.");
+                        } else {
+                            System.out.println("Daftar lagu dalam playlist:");
+                            for (int i = 0; i < p.getAllSong().size(); i++) {
+                                System.out.println((i + 1) + ". " + p.getAllSong().get(i).getInfoMusic());
+                            }
+
+                            System.out.print("Pilih nomor lagu untuk dihapus: ");
+                            int removeIdx = sc.nextInt() - 1;
+                            sc.nextLine();
+
+                            if (removeIdx >= 0 && removeIdx < p.getAllSong().size()) {
+                                Music removed = p.getAllSong().get(removeIdx);
+                                p.deleteMusic(removed);
+                                System.out.println("Lagu berhasil dihapus!");
+                            } else {
+                                System.out.println("Pilihan lagu tidak valid.");
+                            }
+                        }
+                    } else {
+                        System.out.println("Pilihan playlist tidak valid.");
+                    }
+                    break;
+
+                case 6:
                     running = false;
                     System.out.println("Terima kasih telah menggunakan PlayListMusic!");
                     break;
